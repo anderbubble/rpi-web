@@ -12,6 +12,7 @@ requires = [
     'pyramid',
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
+    'RPi.GPIO',
     'waitress',
     ]
 

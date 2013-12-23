@@ -7,11 +7,11 @@
 
   <body>
     <ul>
-      <li tal:repeat="channel outputs">
-        output ${channel}:
-        ${outputs[channel] and 'HIGH' or 'LOW'}
-        <form method="POST" style="display: inline" action="${request.route_url('output_toggle', channel=channel)}">
-          <input name="channel" type="hidden" value="${channel}">
+      <li tal:repeat="pin outputs">
+        output ${pin}:
+        ${format_value(outputs[pin])}
+        <form method="POST" style="display: inline" action="${request.route_url('post_gpio_outputs')}">
+          <input name="pin" type="hidden" value="${pin}">
           <input name="action" type="submit" value="toggle">
         </form>
       </li>
