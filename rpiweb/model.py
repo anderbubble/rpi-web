@@ -64,28 +64,31 @@ def setup_gpio_output (pin):
         GPIO.setup(channel, GPIO.OUT)
         log.info('setup channel {0} as OUT'.format(channel))
         GPIO.output(channel, GPIO.LOW)
-        gpio_outputs[pin] = False
+        gpio_outputs[pin] = 0
         log.info('set default output for channel {0} to LOW'.format(channel))
     else:
         log.warn('channel {0} unconfigured: GPIO module not loaded'.format(channel))
-        gpio_outputs[pin] = False
+        gpio_outputs[pin] = 0
 
 
 def toggle_gpio_output (pin):
     channel = GPIO_PINS[pin]
     starting_value = gpio_outputs[pin]
 
-    if starting_value == False:
-        gpio_outputs[pin] = True
+    if starting_value == 0:
+        gpio_outputs[pin] = 1
     else:
-        gpio_outputs[pin] = False
+        gpio_outputs[pin] = 0
 
     if GPIO:
-        if gpio_outputs[pin] is True:
+        if gpio_outputs[pin] is 1:
             new_value = GPIO.HIGH
+            new_value_text = 'HIGH'
         else:
             new_value = GPIO.LOW
+            new_value_text = 'LOW'
         GPIO.output(channel, new_value)
+        log.info('set output for channel {0} to {1}'.format(channel, new_value_text))
     else:
         log.warn('channel {0} unconfigured: GPIO module not loaded'.format(channel))
     return gpio_outputs[pin]

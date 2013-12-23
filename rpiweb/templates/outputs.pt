@@ -11,14 +11,19 @@
 
   <body class="container">
     <div class="row">
-      <h1 class="col-md-12">RPi GPIO outputs</h1>
+      <h1 class="col-sm-12">RPi GPIO outputs</h1>
     </div>
     <div class="row">
-      <ul class="col-md-2">
-        <li><a href="${request.route_url('get_gpio_inputs')}">inputs</a></li>
-        <li>outputs</li>
+      <ul class="col-sm-2 list-unstyled">
+        <li>
+          GPIO
+          <ul>
+            <li><a href="${request.route_url('get_gpio_inputs')}">inputs</a></li>
+            <li>outputs</li>
+          </ul>
+        </li>
       </ul>
-      <dl class="col-md-10">
+      <dl class="col-sm-10">
         <span tal:repeat="pin outputs">
           <dt>${pin}</dt>
           <dd>

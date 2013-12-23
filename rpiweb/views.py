@@ -4,9 +4,9 @@ from . import model
 
 
 def format_value (value):
-    if value is True:
+    if value is 1:
         return 'HIGH'
-    elif value is False:
+    elif value is 0:
         return 'LOW'
     else:
         return 'unknown'
