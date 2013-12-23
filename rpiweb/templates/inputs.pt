@@ -3,19 +3,28 @@
 <html>
   <head>
     <title>INPUTS</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <ul>
-      <li tal:repeat="pin inputs">
-        input ${pin}:
-        ${format_value(inputs[pin])}
-        <form method="POST" style="display: inline" action="${request.route_url('post_gpio_outputs')}">
-          <input name="pin" type="hidden" value="${pin}">
-          <input name="action" type="hidden" value="setup">
-          <input type="submit" value="make output">
-        </form>
-      </li>
-    </ul>
+    <dl>
+      <span tal:repeat="pin inputs">
+        <dt>${pin}</dt>
+        <dd>
+          ${format_value(inputs[pin])}
+          <form method="POST" style="display: inline" action="${request.route_url('post_gpio_outputs')}">
+            <input name="pin" type="hidden" value="${pin}">
+            <input name="action" type="hidden" value="setup">
+            <input type="submit" value="make output">
+          </form>
+        </dd>
+      </span>
+    </dl>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   </body>
 </html>
