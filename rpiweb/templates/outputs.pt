@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>OUTPUTS</title>
+  </head>
+
+  <body>
+    <ul>
+      <li tal:repeat="channel outputs">
+        output ${channel}:
+        ${outputs[channel] and 'HIGH' or 'LOW'}
+        <form method="POST" style="display: inline" action="${request.route_url('output_toggle', channel=channel)}">
+          <input name="channel" type="hidden" value="${channel}">
+          <input name="action" type="submit" value="toggle">
+        </form>
+      </li>
+    </ul>
+  </body>
+</html>
