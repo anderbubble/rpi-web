@@ -18,6 +18,16 @@ def get_gpio_inputs(request):
     return {'inputs': inputs, 'format_value': format_value}
 
 
+@view_config(route_name='post_gpio_inputs', renderer='templates/inputs.pt')
+def post_gpio_inputs(request):
+    action = request.params['action']
+    pin = request.params['pin']
+    if action == 'setup':
+        model.setup_gpio_input(pin)
+    return get_gpio_inputs(request)
+
+
+
 @view_config(route_name='get_gpio_outputs', renderer='templates/outputs.pt')
 def get_gpio_outputs(request):
     outputs = model.get_gpio_outputs()

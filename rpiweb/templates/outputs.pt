@@ -14,6 +14,11 @@
           <input name="pin" type="hidden" value="${pin}">
           <input name="action" type="submit" value="toggle">
         </form>
+        <form method="POST" style="display: inline" action="${request.route_url('post_gpio_inputs')}">
+          <input name="pin" type="hidden" value="${pin}">
+          <input name="action" type="hidden" value="setup">
+          <input type="submit" value="make input">
+        </form>
       </li>
     </ul>
   </body>

@@ -28,15 +28,22 @@ def gpio_init ():
     if GPIO:
         log.info('set GPIO mode to BOARD')
         GPIO.setmode(GPIO.BOARD)
-
-        for channel in GPIO_PINS:
-            log.info('set GPIO channel {0} to IN')
-            GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
+        for pin in GPIO_PINS:
+            setup_gpio_input(pin)
     else:
         log.warn('GPIO not initialized: GPIO module not loaded')
+    return GPIO_PINS.copy()
 
-    return GPIO_PINS
+
+def setup_gpio_input (pin):
+    channel = GPIO_PINS[pin]
+    if GPIO:
+        GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        log.info('setup channel {0} as IN'.format(channel))
+    else:
+        log.warn('channel {0} unconfigured: GPIO module not loaded'.format(channel))
+    if pin in gpio_outputs:
+        del gpio_outputs[pin]
 
 
 def get_gpio_inputs ():

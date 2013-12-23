@@ -13,6 +13,7 @@ def main(global_config, **settings):
     config.include('pyramid_chameleon')
 
     config.add_route('get_gpio_inputs', '/gpio/inputs', request_method='GET')
+    config.add_route('post_gpio_inputs', '/gpio/inputs', request_method='POST')
 
     config.add_route('get_gpio_outputs', '/gpio/outputs', request_method='GET')
     config.add_route('post_gpio_outputs', '/gpio/outputs', request_method='POST')
