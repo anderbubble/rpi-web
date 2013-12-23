@@ -9,20 +9,29 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
-    <dl>
-      <span tal:repeat="pin inputs">
-        <dt>${pin}</dt>
-        <dd>
-          ${format_value(inputs[pin])}
-          <form method="POST" style="display: inline" action="${request.route_url('post_gpio_outputs')}">
-            <input name="pin" type="hidden" value="${pin}">
-            <input name="action" type="hidden" value="setup">
-            <input type="submit" value="make output">
-          </form>
-        </dd>
-      </span>
-    </dl>
+  <body class="container">
+    <div class="row">
+      <h1 class="col-md-12">RPi GPIO inputs</h1>
+    </div>
+    <div class="row">
+      <ul class="col-md-2">
+        <li>inputs</li>
+        <li><a href="${request.route_url('get_gpio_outputs')}">outputs</a></li>
+      </ul>
+      <dl class="col-md-10">
+        <span tal:repeat="pin inputs">
+          <dt>${pin}</dt>
+          <dd>
+            ${format_value(inputs[pin])}
+            <form method="POST" style="display: inline" action="${request.route_url('post_gpio_outputs')}">
+              <input name="pin" type="hidden" value="${pin}">
+              <input name="action" type="hidden" value="setup">
+              <input type="submit" value="make output">
+            </form>
+          </dd>
+        </span>
+      </dl>
+    </div>
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
