@@ -6,7 +6,7 @@ try:
     import RPi.GPIO as GPIO
 except RuntimeError, ex:
     GPIO = None
-    log.warn('RPi.GPIO module not loaded: {}'.format(ex))
+    log.warn('RPi.GPIO module not loaded: {0}'.format(ex))
 
 
 # BOARD pinout
@@ -45,7 +45,7 @@ def get_gpio_inputs ():
     if GPIO:
         values = (GPIO.input(channel) for channel in channels)
     else:
-        log.warn('inputs unavailable: GPIO module not loaded')
+        log.warn('input channels unavailable: GPIO module not loaded')
         values = (None for channel in channels)
     inputs = dict(zip(pins, values))
     return inputs
@@ -60,7 +60,7 @@ def setup_gpio_output (pin):
         gpio_outputs[pin] = False
         log.info('set default output for channel {0} to LOW'.format(channel))
     else:
-        log.warn('pin unconfigured: GPIO module not loaded')
+        log.warn('channel {0} unconfigured: GPIO module not loaded'.format(channel))
         gpio_outputs[pin] = False
 
 
@@ -80,7 +80,7 @@ def toggle_gpio_output (pin):
             new_value = GPIO.LOW
         GPIO.output(channel, new_value)
     else:
-        log.warn('pin unconfigured: GPIO module not loaded')
+        log.warn('channel {0} unconfigured: GPIO module not loaded'.format(channel))
     return gpio_outputs[pin]
 
 

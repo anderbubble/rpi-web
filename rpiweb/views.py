@@ -12,11 +12,6 @@ def format_value (value):
         return 'unknown'
 
 
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
-def my_view(request):
-    return {'project': 'rpi-web'}
-
-
 @view_config(route_name='get_gpio_inputs', renderer='templates/inputs.pt')
 def get_gpio_inputs(request):
     inputs = model.get_gpio_inputs()
