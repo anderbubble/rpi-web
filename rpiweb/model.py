@@ -14,7 +14,7 @@ GPIO_PINS = {
     'GPIO0': 11,
     'GPIO1': 12,
     'GPIO2': 13,
-    'RPIO3': 15,
+    'GPIO3': 15,
     'GPIO4': 16,
     'GPIO5': 18,
     'GPIO6': 22,
