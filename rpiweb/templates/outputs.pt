@@ -24,7 +24,7 @@
         </li>
       </ul>
       <dl class="col-sm-10">
-        <span tal:repeat="pin outputs">
+        <span tal:repeat="pin python:sorted(outputs)">
           <dt>${pin}</dt>
           <dd>
             ${format_value(outputs[pin])}
